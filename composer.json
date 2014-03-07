@@ -1,0 +1,33 @@
+{
+    "name": "elao/theme-zurb-foundation-4-bundle",
+    "type": "symfony-bundle",
+    "description": "Zurb Foundation 4 theme bundle for ElaoThemeBundle",
+    "keywords": ["elao", "theme-bundle"],
+    "homepage": "https://github.com/Elao/ElaoThemeZurbFoundation4Bundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Elao",
+            "homepage": "http://www.elao.com"
+        },
+        {
+            "name": "Thomas Jarrand",
+            "homepage": "https://github.com/Tom32i"
+        }
+    ],
+    "require": {
+        "php":               ">=5.3.4",
+        "elao/theme-bundle": "1.0.*@dev"
+    },
+    "autoload": {
+        "psr-0": {
+            "Elao\\Bundle\\Theme\\ZurbFoundation4Bundle": "."
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0.x-dev"
+        }
+    },
+    "target-dir": "Elao/Bundle/Theme/ZurbFoundation4Bundle"
+}

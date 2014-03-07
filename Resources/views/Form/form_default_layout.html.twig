@@ -1,0 +1,137 @@
+{% extends "@ElaoForm/Form/form_elao_layout.html.twig" %}
+
+{# Form root block #}
+
+{% block form_start %}
+{% spaceless %}
+    {% set form_class = form_class|default('form') %}
+    {{ parent() }}
+{% endspaceless %}
+{% endblock form_start %}
+
+{# Form row #}
+
+{% block form_row %}
+{% spaceless %}
+    {% if horizontal|default(false) %}
+        {% set label_columns = label_columns|default(3) %}
+        {% set widget_columns = widget_columns|default(12 - label_columns) %}
+        {% set group_attr = group_attr|default({})|merge({'class': (group_attr.class|default('') ~ ' ' ~ 'row')|trim }) %}
+
+        {% set control_group = true %}
+        {% set control_group_attr = control_group_attr|default({})|merge({'class': (control_group_attr.class|default('') ~ ' ' ~ control_group_class|default('columns small-' ~ widget_columns))|trim}) %}
+
+        {% set label_group = true %}
+        {% set label_group_attr = label_group_attr|default({})|merge({'class': (label_group_attr.class|default('') ~ ' ' ~ label_group_class|default(' columns small-' ~ label_columns))|trim}) %}
+
+        {% set label_attr = label_attr|default({})|merge({'class': (label_attr.class|default('') ~ ' inline right')|trim}) %}
+    {% endif %}
+    {{ parent() }}
+{% endspaceless %}
+{% endblock form_row %}
+
+{% block row_container_attributes %}
+{% spaceless %}
+    {% set group_attr = group_attr|default({}) %}
+    {% set group_class = group_class|default('form-group') %}
+    {% set group_error_class = group_error_class|default('error') %}
+    {{ parent() }}
+{% endspaceless %}
+{% endblock row_container_attributes %}
+
+{# Widget classes #}
+
+{% block form_widget %}
+{% spaceless %}
+    {% if not compound or expanded|default(true) is sameas(false) %}
+        {% set control_class = control_class|default('form-control') %}
+    {% endif %}
+    {{ parent() }}
+{% endspaceless %}
+{% endblock form_widget %}
+
+{% block textarea_widget %}
+{% spaceless %}
+    {% set control_class = control_class|default('form-control') %}
+    {{ parent() }}
+{% endspaceless %}
+{% endblock textarea_widget %}
+
+{% block form_widget_simple %}
+{% spaceless %}
+    {% set control_class = control_class|default('form-control') %}
+    {{ parent() }}
+{% endspaceless %}
+{% endblock form_widget_simple %}
+
+{% block choice_widget_collapsed %}
+{% spaceless %}
+    {% set control_class = control_class|default('form-control') %}
+    {{ parent() }}
+{% endspaceless %}
+{% endblock choice_widget_collapsed %}
+
+{% block button_widget %}
+    {% set type = type|default('button') %}
+    {% set btn_class = btn_class|default(type == 'submit' ? '' : type == 'reset' ? 'alert' : 'secondary') %}
+    {% set attr = attr|merge({'class': attr.class|default('') ~ ' medium button radius ' ~ btn_class }) %}
+    {{ parent() }}
+{% endblock button_widget %}
+
+{# Help blocks #}
+
+{% block form_help %}
+    {% set help_class = help_class|default('help-block') %}
+    {{ parent() }}
+{% endblock %}
+
+{# Checkbox and radio #}
+{% block choice_widget_expanded %}
+{% spaceless %}
+    {% set tag = tag|default('fieldset') %}
+    <{{ tag }} {{ block('widget_container_attributes') }}>
+    {% for child in form %}
+        {{ form_widget(child, {'box_inline': box_inline|default(false) }) }}
+    {% endfor %}
+    </{{ tag }}>
+{% endspaceless %}
+{% endblock choice_widget_expanded %}
+
+{% block checkbox_widget %}
+    {% set box_class = (group_class|default('') ~ ' checkbox' ~ (box_inline|default(false) ? '-inline' : ''))|trim %}
+
+    <div class="{{ box_class }}">
+    {% if label is sameas(false) %}
+        {{ parent() }}
+    {% else %}
+        {{ form_label(form, parent() ~ label|trans({}, translation_domain)) }}
+    {% endif %}
+    </div>
+{% endblock checkbox_widget %}
+
+{% block radio_widget %}
+    {% set box_class = box_class|default('radio' ~ (box_inline|default(false) ? '-inline' : '')) %}
+
+    <div class="{{ box_class }}">
+    {% if label is sameas(false) %}
+        {{ parent() }}
+    {% else %}
+        {{ form_label(form, parent() ~ label|trans({}, translation_domain)) }}
+    {% endif %}
+    </div>
+{% endblock radio_widget %}
+
+{# Collection #}
+{% block collection_add_button %}
+{% spaceless %}
+    {% set button_class = button_class|default("medium button radius success") %}
+    {{ parent() }}
+{% endspaceless %}
+{% endblock collection_add_button %}
+
+{% block collection_delete_button %}
+{% spaceless %}
+    {% set button_class = button_class|default("medium button radius alert") %}
+    {{ parent() }}
+{% endspaceless %}
+{% endblock collection_delete_button %}

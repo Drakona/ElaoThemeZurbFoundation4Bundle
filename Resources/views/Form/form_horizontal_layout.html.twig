@@ -1,0 +1,10 @@
+{% extends "@ElaoThemeZurbFoundation4/Form/form_default_layout.html.twig" %}
+
+{# Form row #}
+
+{% block form_row %}
+{% spaceless %}
+    {% set horizontal = true %}
+    {{ parent() }}
+{% endspaceless %}
+{% endblock form_row %}
