@@ -17,7 +17,7 @@
     ],
     "require": {
         "php":               ">=5.3.4",
-        "elao/theme-bundle": "1.0.*@dev"
+        "elao/theme-bundle": "bugfix"
     },
     "autoload": {
         "psr-0": {
