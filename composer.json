@@ -23,7 +23,7 @@
     },
     "require": {
         "php":               ">=5.3.4",
-        "elao/theme-bundle": "bugfix"
+        "elao/theme-bundle": "dev-bugfix"
     },
     "autoload": {
         "psr-0": {
