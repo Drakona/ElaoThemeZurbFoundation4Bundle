@@ -15,6 +15,12 @@
             "homepage": "https://github.com/Tom32i"
         }
     ],
+    "repositories": {
+        "elao/theme-bundle": {
+            "type": "vcs",
+            "url": "git@github.com:Drakona/ElaoThemeBundle.git"
+        }
+    },
     "require": {
         "php":               ">=5.3.4",
         "elao/theme-bundle": "bugfix"
