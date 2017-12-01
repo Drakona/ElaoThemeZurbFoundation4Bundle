@@ -43,7 +43,7 @@
 
 {% block form_widget %}
 {% spaceless %}
-    {% if not compound or expanded|default(true) is sameas(false) %}
+    {% if not compound or expanded|default(true) is same as(false) %}
         {% set control_class = control_class|default('form-control') %}
     {% endif %}
     {{ parent() }}
@@ -101,7 +101,7 @@
     {% set box_class = (group_class|default('') ~ ' checkbox' ~ (box_inline|default(false) ? '-inline' : ''))|trim %}
 
     <div class="{{ box_class }}">
-    {% if label is sameas(false) %}
+    {% if label is same as(false) %}
         {{ parent() }}
     {% else %}
         {{ form_label(form, parent() ~ label|trans({}, translation_domain)) }}
@@ -113,7 +113,7 @@
     {% set box_class = box_class|default('radio' ~ (box_inline|default(false) ? '-inline' : '')) %}
 
     <div class="{{ box_class }}">
-    {% if label is sameas(false) %}
+    {% if label is same as(false) %}
         {{ parent() }}
     {% else %}
         {{ form_label(form, parent() ~ label|trans({}, translation_domain)) }}
